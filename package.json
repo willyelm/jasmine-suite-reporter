@@ -1,0 +1,32 @@
+{
+  "name": "jasmine-suite-reporter",
+  "version": "1.0.0",
+  "description": "Simple suite Reporter for Jasmine 2",
+  "main": "reporter/index.js",
+  "scripts": {
+    "test": "node jasmine.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/willyelm/jasmine-suite-reporter"
+  },
+  "keywords": [
+    "jasmine",
+    "reporter",
+    "suite",
+    "protractor",
+    "unit",
+    "test"
+  ],
+  "author": "Williams Medina",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/willyelm/jasmine-suite-reporter/issues"
+  },
+  "homepage": "https://github.com/willyelm/jasmine-suite-reporter",
+  "dependencies": {
+    "colors": "1.1.2",
+    "jasmine": "^2.4.1",
+    "lodash": "^4.5.0"
+  }
+}
