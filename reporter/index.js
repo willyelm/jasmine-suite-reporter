@@ -1,11 +1,17 @@
 'use strict';
 
 const suiteReporter = require('./reporter');
+const _ = require('lodash');
 
 module.exports = {
+  create: function(options) {
 
-  create: function() {
+    var reporter = Object.create(suiteReporter);
 
-    return Object.create(suiteReporter);
+    reporter.options = _.defaults(options, {
+      includeStack: false
+    });
+
+    return reporter;
   }
 };

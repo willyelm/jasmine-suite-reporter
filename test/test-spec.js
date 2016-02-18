@@ -9,11 +9,7 @@ describe('A suite', function() {
 
   describe('B suite', function() {
 
-    it('Testing B 1', function() {
-      expect(true).toBe(true);
-    });
-
-    it('Testing B 2', function() {
+    it('Testing B', function() {
       expect(true).toBe(true);
     });
   });

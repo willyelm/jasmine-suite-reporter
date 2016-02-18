@@ -6,6 +6,8 @@ const colors = require('colors/safe');
 
 module.exports = {
 
+  options: {},
+
   specStarted: function() {
     this.totalSpecsExecuted++;
   },
@@ -27,7 +29,7 @@ module.exports = {
       colors[color]('●'),
       result.fullName);
 
-    if(errors) {
+    if(errors && this.options.includeStack === true) {
       log.error(' ', colors.red(_.map(errors, 'stack')));
     }
   },
