@@ -2,7 +2,7 @@
 
 const _ = require('lodash');
 const log = require('console');
-const colors = require('colors/safe');
+const colors = require('colors');
 
 module.exports = {
 
@@ -15,18 +15,21 @@ module.exports = {
   specDone: function(result) {
 
     var color = 'red';
+    var symbol = '●';
     var errors;
 
     if(result.status === 'passed') {
       color = 'green';
+      symbol = '✔';
       this.totalSpecsPassed++;
     } else {
+      symbol = '✘';
       this.totalSpecsFailed++;
       errors = result.failedExpectations;
     }
 
     log.log(' ',
-      colors[color]('●'),
+      colors[color](symbol),
       result.fullName);
 
     if(errors && this.options.includeStack === true) {
