@@ -1,6 +1,6 @@
 {
   "name": "jasmine-suite-reporter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple suite Reporter for Jasmine 2",
   "main": "reporter/index.js",
   "scripts": {
