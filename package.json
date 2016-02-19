@@ -4,6 +4,7 @@
   "description": "Simple suite Reporter for Jasmine 2",
   "main": "reporter/index.js",
   "scripts": {
+    "pretest": "npm install",
     "test": "node jasmine.conf.js"
   },
   "repository": {
