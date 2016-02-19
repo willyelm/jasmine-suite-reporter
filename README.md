@@ -1,5 +1,7 @@
 # jasmine-suite-reporter
 
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/jasmine-suite-reporter) 
+
 [![Build Status](https://travis-ci.org/willyelm/jasmine-suite-reporter.svg?branch=master)](https://travis-ci.org/willyelm/jasmine-suite-reporter)
 
 A Simple suite spec reporter for Jasmine 2
