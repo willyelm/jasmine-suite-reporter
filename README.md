@@ -4,6 +4,8 @@
 
 A Simple suite spec reporter for Jasmine 2
 
+![](screen.gif)
+
 ## Usage
 
 ### Installation

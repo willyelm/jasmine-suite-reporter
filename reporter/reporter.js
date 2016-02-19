@@ -14,7 +14,9 @@ module.exports = {
 
   specDone: function(result) {
 
+    var self = this;
     var color = 'red';
+    var space = ' ';
     var symbol = '●';
     var errors;
 
@@ -28,12 +30,19 @@ module.exports = {
       errors = result.failedExpectations;
     }
 
-    log.log(' ',
+    log.log(space,
       colors[color](symbol),
       result.fullName);
 
-    if(errors && this.options.includeStack === true) {
-      log.error(' ', colors.red(_.map(errors, 'stack')));
+    if(errors) {
+      _.forEach(errors, function(error) {
+
+        log.error(space, space, '↳', colors.red(_.get(error, 'message')));
+
+        if(self.options.includeStack === true) {
+          log.error(space, space, space, colors.red(_.get(error, 'stack')));
+        }
+      });
     }
   },
 

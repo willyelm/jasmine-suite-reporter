@@ -2,14 +2,14 @@
 
 describe('A suite', function() {
 
-  it('testing A', function() {
+  it('testing A', function testingA() {
 
     expect(true).toBe(true);
   });
 
   describe('B suite', function() {
 
-    it('Testing B', function() {
+    it('Testing B', function testingB() {
       expect(true).toBe(true);
     });
   });
@@ -17,7 +17,7 @@ describe('A suite', function() {
 
 describe('C suite', function() {
 
-  it('Testing C', function() {
+  it('Testing C', function testingC() {
 
     expect(true).toBe(true);
   });
