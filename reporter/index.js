@@ -12,6 +12,6 @@ module.exports = {
       includeStack: false
     });
 
-    return reporter;
+    //return reporter;
   }
 };
