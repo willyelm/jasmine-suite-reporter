@@ -6,17 +6,17 @@ const SuiteReporter = require('./reporter/index');
 
 //Jasmine Configuration
 jasmine.loadConfig({
-  spec_dir: 'test',
-  spec_files: [
+  'spec_dir': 'test',
+  'spec_files': [
     '**/*-spec.js'
   ],
-  stopSpecOnExpectationFailure: false,
-  random: false
+  'stopSpecOnExpectationFailure': false,
+  'random': false
 });
 
 //Register Reporter
 jasmine.addReporter(SuiteReporter.create({
-  includeStack: true
+  includeStack: false
 }));
 //Jasmine Start
 jasmine.execute();

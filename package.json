@@ -1,11 +1,11 @@
 {
   "name": "jasmine-suite-reporter",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Simple suite Reporter for Jasmine 2",
   "main": "reporter/index.js",
   "scripts": {
     "pretest": "npm install",
-    "test": "node jasmine.conf.js"
+    "test": "eslint *.js test/**/*.js reporter/**/*.js  && node jasmine.conf.js"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,8 @@
     "colors": "1.1.2",
     "jasmine": "^2.4.1",
     "lodash": "^4.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.2.0"
   }
 }

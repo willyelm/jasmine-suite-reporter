@@ -2,23 +2,49 @@
 
 const _ = require('lodash');
 const log = require('console');
-const colors = require('colors');
+const colors = require('colors/safe');
 
 module.exports = {
 
   options: {},
 
-  specStarted: function() {
+  separator: '  ',
+
+  levels: [],
+
+  specStarted(spec) {
+
+    var name = spec.fullName.replace(` ${spec.description}`, '');
+
     this.totalSpecsExecuted++;
+    _.extend(spec, {
+      level: this.levels[name] || 1
+    });
   },
 
-  specDone: function(result) {
+  suiteStarted(suite) {
+
+    var name = suite.fullName.replace(` ${suite.description}`, '');
+    var level = 1;
+
+    if(this.levels[name]) {
+      level = this.levels[name] + 1;
+    }
+    log.log(_.repeat(this.separator, level),
+      colors.gray(suite.description));
+
+    this.levels[suite.fullName] = level;
+  },
+
+  specDone(result) {
 
     var self = this;
     var color = 'red';
-    var space = ' ';
     var symbol = '●';
     var errors;
+    var space = this.separator;
+    var dots = _.repeat(colors.green('▪'), result.passedExpectations.length) +
+      _.repeat(colors.red('▪'), result.failedExpectations.length);
 
     if(result.status === 'passed') {
       color = 'green';
@@ -30,24 +56,38 @@ module.exports = {
       errors = result.failedExpectations;
     }
 
+    //log.info(result.level);
+
     log.log(space,
+      _.repeat(space, result.level),
       colors[color](symbol),
-      result.fullName);
+      result.description,
+      dots);
 
     if(errors) {
-      _.forEach(errors, function(error) {
 
-        log.error(space, space, '↳', colors.red(_.get(error, 'message')));
+      _.forEach(errors, error => {
+
+        log.error(space,
+          _.repeat(space, result.level),
+          '↳',
+          colors.red(`${error.matcherName}: ${error.message}`));
 
         if(self.options.includeStack === true) {
-          log.error(space, space, space, colors.red(_.get(error, 'stack')));
+
+          log.error(space,
+            space,
+            space,
+            space,
+            colors.red(_.get(error, 'stack')));
         }
       });
     }
   },
 
-  jasmineStarted: function(info) {
+  jasmineStarted(info) {
     this.hrstart = process.hrtime();
+    this.levels = {};
     this.totalSpecsExecuted = 0;
     this.totalSpecsFailed = 0;
     this.totalSpecsPassed = 0;
@@ -55,8 +95,11 @@ module.exports = {
     //console.log('Running suite with ' + suiteInfo.totalSpecsDefined);
   },
 
-  jasmineDone: function() {
+  jasmineDone() {
+
     var hrend = process.hrtime(this.hrstart);
+
+    log.log(this.separator);
 
     log.log('Executed %d of %d (%d secs)',
       this.totalSpecsExecuted,
