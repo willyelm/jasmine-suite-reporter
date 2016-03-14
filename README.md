@@ -1,6 +1,6 @@
 # jasmine-suite-reporter
 
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/jasmine-suite-reporter) 
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/jasmine-suite-reporter)
 [![Build Status](https://travis-ci.org/willyelm/jasmine-suite-reporter.svg?branch=master)](https://travis-ci.org/willyelm/jasmine-suite-reporter)
 
 A Simple suite spec reporter for Jasmine 2
@@ -64,6 +64,26 @@ exports.config = {
       includeStack: true
     }));
   }
+};
+
+```
+
+
+### Karma Implementation
+
+In your karma.conf.js  file:
+
+```javascript
+
+module.exports = function(config){
+  config.set({
+    // your config settings ...
+    reporters: ['suite'],
+    plugins: [
+      //your plugins...
+      'jasmine-suite-reporter/karma'
+    ]
+  })
 };
 
 ```
