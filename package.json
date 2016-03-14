@@ -5,7 +5,9 @@
   "main": "reporter/index.js",
   "scripts": {
     "pretest": "npm install",
-    "test": "eslint *.js test/**/*.js reporter/**/*.js  && node jasmine.conf.js"
+    "lint": "eslint *.js test/**/*.js reporter/**/*.js",
+    "test-jasmine": "npm run lint && node jasmine.conf.js",
+    "test-karma": "karma start karma.conf.js --single-run"
   },
   "repository": {
     "type": "git",
@@ -13,6 +15,7 @@
   },
   "keywords": [
     "jasmine",
+    "karma",
     "reporter",
     "suite",
     "protractor",
@@ -28,9 +31,14 @@
   "dependencies": {
     "colors": "1.1.2",
     "jasmine": "^2.4.1",
-    "lodash": "^4.5.0"
+    "lodash": "^4.5.0",
+    "karma": "^0.13.22"
   },
   "devDependencies": {
-    "eslint": "^2.2.0"
+    "eslint": "^2.2.0",
+    "jasmine-core": "^2.4.1",
+    "karma-jasmine": "^0.3.7",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.5"
   }
 }

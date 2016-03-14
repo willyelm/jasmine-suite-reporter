@@ -12,9 +12,6 @@ describe('A: Test a features', function() {
     it('Testing B 1', function testingB() {
       expect(true).toBe(true);
       expect(true).toBe(true);
-      expect(false).toBe(true);
-      expect(true).toBe(true);
-      expect(true).toBe(true);
     });
     it('Testing B 2', function testingB() {
       expect(true).toBe(true);
